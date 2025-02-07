@@ -8,6 +8,7 @@ import ResetConfirmation from "./pages/Auth/ResetConfirmation";
 import PasswordUpdate from "./pages/Auth/PasswordUpdate";
 import PasswordUpdateConfirm from "./pages/Auth/PasswordUpdateConfirm";
 import "react-toastify/dist/ReactToastify.css";
+import RouteConsolidation from "./pages/Optimize/RouteConsolidation";
 
 function App() {
   return (
@@ -20,8 +21,12 @@ function App() {
           <Route path="reset-password" element={<ResetPassword />} />
           <Route path="reset-confirmation" element={<ResetConfirmation />} />
           <Route path="password-update" element={<PasswordUpdate />} />
-          <Route path="password-update-confirm" element={<PasswordUpdateConfirm />} />
+          <Route
+            path="password-update-confirm"
+            element={<PasswordUpdateConfirm />}
+          />
         </Route>
+        <Route path="route-consolidation" element={<RouteConsolidation />} />
       </Routes>
       <ToastContainer />
     </div>
