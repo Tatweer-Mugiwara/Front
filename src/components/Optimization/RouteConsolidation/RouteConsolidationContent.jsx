@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import InputComponent from "./InputComponent";
 import OutputComponent from "./OutputComponent";
 import TreatmentComponent from "./TreatmentComponent";
+
 const RouteConsolidationContent = () => {
   const [selectedTab, setSelectedTab] = useState("input");
 
@@ -55,12 +56,16 @@ const RouteConsolidationContent = () => {
         className={`w-[80%] mb-4 px-8 py-4 flex flex-col items-center  border border-mainColor mt-8 transition-all duration-300`}
       >
         {selectedTab === "input" && <InputComponent />}
-        {selectedTab === "treatment" && <TreatmentComponent />}
-        {selectedTab === "output" && <OutputComponent />}
+        {selectedTab === "treatment" && (
+          <TreatmentComponent handleTabChange={handleTabChange} />
+        )}
+        {selectedTab === "output" && (
+          <OutputComponent handleTabChange={handleTabChange} />
+        )}
         {selectedTab === "input" && (
           <button
-            onClick={()=>{
-            handleTabChange("treatment")
+            onClick={() => {
+              handleTabChange("treatment");
             }}
             className="mt-8 px-8 py-2 bg-mainColor text-white"
           >
@@ -69,8 +74,8 @@ const RouteConsolidationContent = () => {
         )}
         {selectedTab === "treatment" && (
           <button
-            onClick={()=>{
-            handleTabChange("output")
+            onClick={() => {
+              handleTabChange("output");
             }}
             className="mt-8 px-8 py-2 bg-mainColor text-white"
           >

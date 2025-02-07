@@ -4,7 +4,7 @@ import API from "../../../utils/api-client";
 
 const InputComponent = () => {
   //   const [data, setData] = useState([]);
-  const [projects, setProjects] = useState([]);
+  const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -12,7 +12,7 @@ const InputComponent = () => {
       try {
         setIsLoading(true);
         const response = await API.get("orders/");
-        setProjects(response.data.orders);
+        setData(response.data.orders);
       } catch (error) {
         toast.error(error?.response?.message ?? "Error", {
           position: "top-center",
@@ -46,18 +46,40 @@ const InputComponent = () => {
             </tr>
           </thead>
           <tbody>
-          {projects.map((row, index) => (
-            <tr key={index}>
-              <td className="border border-mainColor px-4 py-2 text-mainColor">{row.client}</td>
-              <td className="border border-mainColor px-4 py-2 text-mainColor">{row.departure}</td>
-              <td className="border border-mainColor px-4 py-2 text-mainColor">{row.intermediateDestinations.length>0 ? row.intermediateDestinations[0] : "/"}</td>
-              <td className="border border-mainColor px-4 py-2 text-mainColor">{row.destination}</td>
-              <td className="border border-mainColor px-4 py-2 text-mainColor">{row.departureTime}</td>
-              <td className="border border-mainColor px-4 py-2 text-mainColor">{row.truckMaxWeight} Tonnes</td>
-              <td className="border border-mainColor px-4 py-2 text-mainColor">{row.weight} Tonnes</td>
-            </tr>
-          ))}
-        </tbody>
+            {data.map((row, index) => (
+              <tr key={index}>
+                <td className="border border-mainColor px-4 py-2 text-mainColor">
+                  {row.client}
+                </td>
+                <td className="border border-mainColor px-4 py-2 text-mainColor">
+                  {row.departure}
+                </td>
+                <td className="border border-mainColor px-4 py-2 text-mainColor">
+                  {row.intermediateDestinations.length > 0
+                    ? row.intermediateDestinations[0]
+                    : "/"}
+                </td>
+                <td className="border border-mainColor px-4 py-2 text-mainColor">
+                  {row.destination}
+                </td>
+                <td className="border border-mainColor px-4 py-2 text-mainColor">
+                  {new Date(row.departureTime).toLocaleString("fr-FR", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })}
+                </td>{" "}
+                <td className="border border-mainColor px-4 py-2 text-mainColor">
+                  {row.truckMaxWeight} Tonnes
+                </td>
+                <td className="border border-mainColor px-4 py-2 text-mainColor">
+                  {row.weight} Tonnes
+                </td>
+              </tr>
+            ))}
+          </tbody>
         </table>
       </div>
     </div>
