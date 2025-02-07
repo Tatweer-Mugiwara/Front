@@ -4,7 +4,6 @@ import { Check } from "lucide-react";
 import { X } from "lucide-react";
 import { toast } from "react-toastify";
 
-
 const OutputComponent = ({ handleTabChange }) => {
   const [data, setData] = useState([]);
   const [suggestions, setSuggestions] = useState([]);
@@ -98,8 +97,14 @@ const OutputComponent = ({ handleTabChange }) => {
                   {row.destination}
                 </td>
                 <td className="border border-mainColor px-4 py-2 text-mainColor">
-                  {row.departureTime}
-                </td>
+                  {new Date(row.departureTime).toLocaleString("fr-FR", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })}
+                </td>{" "}
                 <td className="border border-mainColor px-4 py-2 text-mainColor">
                   {row.truckMaxWeight} Tonnes
                 </td>
