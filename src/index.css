@@ -16,7 +16,7 @@ html {
 .map-wrap {
     position: relative;
     width: 100%;
-    height: calc(100vh - 77px); /* calculate height of the screen minus the heading */
+    height: calc(100vh - 77px);
 }
 
 .map {
@@ -26,14 +26,14 @@ html {
 }
 
 .loading-spinner {
-    animation: spin 2s linear infinite; /* Fait tourner l'image en continu */
+    animation: spin 2s linear infinite; 
   }
   
   @keyframes spin {
     0% {
-      transform: rotate(0deg); /* Début de la rotation */
+      transform: rotate(0deg); 
     }
     100% {
-      transform: rotate(360deg); /* Fin de la rotation (un tour complet) */
+      transform: rotate(360deg); 
     }
   }
