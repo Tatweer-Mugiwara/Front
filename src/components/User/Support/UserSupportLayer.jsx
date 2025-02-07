@@ -10,7 +10,7 @@ const UserSupportLayout = ({ children, isLoading }) => {
       {isLoading ? <Loading /> : <SupportContent />}
       {isLoading ? <Loading /> : <FrequentlyAskedQuestions />}
       <div className="bg-mainColor font-unbounded font-bold text-center py-3 text-white">
-        2024 BuildHub.All Rights Reserved.
+        2024 RouteGenius.All Rights Reserved.
       </div>
     </div>
   );

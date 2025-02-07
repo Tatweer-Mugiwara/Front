@@ -9,7 +9,7 @@ const WhoAreWe = () => {
           WHO ARE WE
         </p>
         <h2 className="font-unbounded font-bold max-w-[38rem] text-[3rem] mb-10">
-          AN ARCHITECTURE TO SHOW OUR APPRECIATION
+        Driving the Future of Smart Logistics
         </h2>
         <p className="text-sm">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero,
@@ -19,21 +19,21 @@ const WhoAreWe = () => {
         <ul className="mt-10">
           <li className="flex mb-3">
             <img src="/images/Home/right.svg" alt="right" />
-            <p>
+            <p className="ml-4">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
               Consequuntur, tenetur.
             </p>
           </li>
           <li className="flex mb-3">
             <img src="/images/Home/right.svg" alt="right" />
-            <p>
+            <p className="ml-4">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
               Consequuntur, tenetur.
             </p>
           </li>
           <li className="flex mb-3">
             <img src="/images/Home/right.svg" alt="right" />
-            <p>
+            <p className="ml-4">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit.
               Consequuntur, tenetur.
             </p>

@@ -68,7 +68,7 @@ const Navbar = () => {
               to="/user/projects"
               className={({ isActive }) => (isActive ? "underline" : "")}
             >
-              Projects
+              RouteGenius
             </NavLink>
           </li>
           <li className="flex transition-all hover:translate-y-1">

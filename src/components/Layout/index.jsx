@@ -11,7 +11,7 @@ const Layout = ({ children, isLoading }) => {
                 }
             </main>
             <div className="bg-mainColor font-unbounded font-bold text-center py-3 text-white">
-                2024 BuildHub.All Rights Reserved.
+                2024 RouteGenius.All Rights Reserved.
             </div>
         </div>
     )

@@ -28,7 +28,7 @@ const Footer = () => {
             <img src="/images/Home/locationIcon.svg" alt="Location" />
           </div>
         </div>
-        <div>
+        <div className="pb-5">
           <p className="font-unbounded font-bold text-[1.5rem] mb-8">
             Information
           </p>

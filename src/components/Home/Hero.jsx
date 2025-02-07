@@ -4,7 +4,7 @@ const Hero = () => {
   return (
     <div className="flex justify-between px-[4rem] md:px-[7rem]">
       <div>
-        <h2 className="font-bold font-unbounded text-[3rem] max-w-[30rem] mb-20">FIELD CONSTRUCTION TRAKING</h2>
+        <h2 className="font-bold font-unbounded text-[3rem] max-w-[30rem] mb-20">LOAD & TRANSPORT OPTIMIZATION</h2>
         <p className="text-sm max-w-[55rem] mb-10">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo
           similique expedita recusandae vel. Aliquam tempore, quae voluptate
@@ -16,7 +16,9 @@ const Hero = () => {
           voluptatem! Debitis?
         </p>
       </div>
-      <img className="max-w-[10rem] self-end" src="/images/Home/LinkedPath.svg" alt="LinkedPath" />
+      <div className="flex flex-col gap-4">
+        <img className="self-end" src="/images/Home/Cargo.svg" alt="Cargo" />
+      </div>
     </div>
   );
 };
