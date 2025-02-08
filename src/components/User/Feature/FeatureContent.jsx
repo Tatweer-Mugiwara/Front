@@ -16,7 +16,7 @@ const FeaturesContent = () => {
     {
       title: "Inter-Truck Load Optimization",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
-      slug: "inter-truck-load-optimization",
+      slug: "inter-truck-load",
     },
     {
       title: "Visibilité et Réactivité en Temps Réel",

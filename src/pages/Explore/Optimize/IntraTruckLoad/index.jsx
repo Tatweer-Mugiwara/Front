@@ -1,9 +1,9 @@
 import { useLoadScript } from "@react-google-maps/api";
 import Layout from "../../../../components/Layout";
-import RouteConsolidationContent from "../../../../components/Optimization/RouteConsolidation/RouteConsolidationContent";
+// import IntraTruckLoadContent from "../../../../components/Optimization/IntraTruckLoad";
 import { libraries } from "../../../../../constants";
 
-const RouteConsolidation = () => {
+const IntraTruckLoad = () => {
     const { isLoaded } = useLoadScript({
       googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAP_API_KEY,
       libraries: libraries,
@@ -11,9 +11,9 @@ const RouteConsolidation = () => {
 
   return (
     <Layout isLoading={!isLoaded}>
-      <RouteConsolidationContent />
+      {/* <IntraTruckLoadContent /> */}
     </Layout>
   );
 };
 
-export default RouteConsolidation;
+export default IntraTruckLoad;
