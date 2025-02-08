@@ -1,4 +1,5 @@
 import { useState } from "react";
+import TrucksList from "./TrucksList";
 import Tabs from "../../Tabs";
 
 const RoutingContent = () => {
@@ -11,7 +12,7 @@ const RoutingContent = () => {
       content={[
         {
           header: "Trucks",
-          component: <div></div>,
+          component: <TrucksList />,
           key: "trucks",
         }
       ]}

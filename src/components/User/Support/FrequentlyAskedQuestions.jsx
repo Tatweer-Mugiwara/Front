@@ -12,12 +12,12 @@ function FAQElement(props) {
     <div
       className={`${
         isOpen
-          ? "px-[4vw] w-[80vw] border-2 py-[4vh] border-mainColor rounded-[8px] flex flex-col gap-[2vh] bg-mainColor text-white shadow-[0_35px_60px_15px_rgba(43, 45, 66, 1)] transition duration-700"
-          : "px-[4vw] w-[80vw] border-2 py-[3vh] border-mainColor rounded-[8px] flex flex-col gap-[2vh] transition duration-700 text-Typo"
+          ? "px-[4vw] w-[80vw] bg-white border-2 py-[4vh] border-mainColor rounded-[8px] flex flex-col gap-[2vh] bg-mainColor text-white shadow-[0_35px_60px_15px_rgba(43, 45, 66, 1)] transition duration-700"
+          : "px-[4vw] w-[80vw] bg-white border-2 py-[3vh] border-mainColor rounded-[8px] flex flex-col gap-[2vh] transition duration-700 text-Typo"
       }`}
+      onClick={toggleOpen}
     >
       <button
-        onClick={toggleOpen}
         className="flex items-center justify-between text-[1.3rem] md:text-[1.6rem]"
       >
         {props.question} {isOpen ? <FaChevronUp /> : <FaChevronDown />}
