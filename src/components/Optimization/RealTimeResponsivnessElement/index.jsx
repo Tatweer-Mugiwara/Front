@@ -3,9 +3,11 @@ import Tabs from "../../Tabs";
 import TruckGraphs from "./TruckGraphs";
 import TruckTables from "./TruckTables";
 
-const RealTimeResponsivnessElement = () => {
+const RealTimeResponsivnessElement = ({
+  table,
+  graph
+}) => {
   const [toUpdateVal, _setToUpdateVal] = useState(null);
-  const [data, setData] = useState([]);
   return (
     <Tabs
       tabValue={toUpdateVal}
@@ -14,12 +16,12 @@ const RealTimeResponsivnessElement = () => {
       content={[
         {
           header: "graphs",
-          component: <TruckGraphs data={[]} />,
+          component: <TruckGraphs data={graph} />,
           key: "graphs",
         },
         {
           header: "tables",
-          component: <TruckTables data={[]} />,
+          component: <TruckTables data={table} />,
           key: "tables",
         }
       ]}

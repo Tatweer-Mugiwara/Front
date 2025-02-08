@@ -1,10 +1,10 @@
 import { useState } from "react";
 
 export default function TruckGraphs({
-  data,
-  setData,
+  data
 }) {
     const [filter, setFilter] = useState("");
+    const [dataF, _setDataF] = useState(data);
     return (
       <div className="w-full outline-none">
         <div className="overflow-x-auto mt-4 flex flex-col gap-10">
@@ -14,7 +14,6 @@ export default function TruckGraphs({
             </p>
             <select className="px-16 py-3 font-unbounded font-bold transition-all bg-mainColor text-white text-center" onChange={(e) => {
               setFilter(e.target.value);
-              setData(data.filter(truck => truck.status === e.target.value));
             }} value={filter}>
               <option value="CO2">Sensors</option>
               <option value="Heat">Heat</option>

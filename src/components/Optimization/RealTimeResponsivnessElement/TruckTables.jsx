@@ -1,10 +1,10 @@
 import { useState } from "react";
 
 export default function TruckTables({
-  data,
-  setData
+  data
 }) {
   const [filter, setFilter] = useState("");
+  const [dataF, _setDataF] = useState(data);
   return (
     <div className="w-full outline-none">
       <div className="overflow-x-auto mt-4 flex flex-col gap-10">
@@ -14,7 +14,6 @@ export default function TruckTables({
           </p>
           <select className="px-16 py-3 font-unbounded font-bold transition-all bg-mainColor text-white text-center" value={filter} onChange={(e) => {
             setFilter(e.target.value);
-            setData(data.filter(truck => truck.status === e.target.value));
           }}>
             <option value="CO2">Sensors</option>
             <option value="Heat">Heat</option>
@@ -34,16 +33,16 @@ export default function TruckTables({
               </tr>
             </thead>
             <tbody>
-              {data.map((row, index) => (
+              {dataF.map((row, index) => (
                 <tr key={index}>
                   <td className="border border-mainColor px-4 py-2 text-mainColor">
-                    {row?.date}
+                    {row?.createdAt ?? "N/A"}
                   </td>
                   <td className="border border-mainColor px-4 py-2 text-mainColor">
                     {row?.condition}
                   </td>
                   <td className="border border-mainColor px-4 py-2 text-mainColor">
-                    {row?.sensor}
+                    {row?.capteur}
                   </td>
                   <td className="border border-mainColor px-4 py-2 text-mainColor">
                     {row?.description}

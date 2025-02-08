@@ -6,45 +6,80 @@ import API from "../../../../utils/api-client";
 import RealTimeResponsivnessElementContent from "../../../../components/Optimization/RealTimeResponsivnessElement";
 
 const RealTimeResponsivnessElement = () => {
-  const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
   const { tid } = useParams();
+    
+  const [tablesData, setTablesData] = useState([]);
+  const [isTableLoading, setIsTableLoading] = useState(false);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       setIsLoading(true);
-  //       const response = await API.get("trucks/"+tid);
-  //       if (!response.data) {
-  //         toast.error("No truck found with this id", {
-  //           position: "top-center",
-  //           autoClose: 5000,
-  //           pauseOnHover: true,
-  //           draggable: true,
-  //           theme: "light",
-  //         });
-  //         return;
-  //       }
-  //       setData(response.data);
-  //     } catch (error) {
-  //       toast.error(error?.response?.message ?? "Error", {
-  //         position: "top-center",
-  //         autoClose: 5000,
-  //         pauseOnHover: true,
-  //         draggable: true,
-  //         theme: "light",
-  //       });
-  //     } finally {
-  //       setIsLoading(false);
-  //     }
-  //   };
+  const [graphsData, setGraphsData] = useState([]);
+  const [isGraphLoading, setIsGraphLoading] = useState(false);
 
-  //   fetchData();
-  // }, []);
+  useEffect(() => {
+    const getTableInfo = async () => {
+      try {
+        setIsTableLoading(true);
+        const response = await API.get(`reports/truck/${tid}/`);
+        if (!response.data) {
+          toast.error("No captions for this truck", {
+            position: "top-center",
+            autoClose: 5000,
+            pauseOnHover: true,
+            draggable: true,
+            theme: "light",
+          });
+          return;
+        }
+        setTablesData(response.data);
+      } catch (error) {
+        toast.error(error?.response?.message ?? "Error", {
+          position: "top-center",
+          autoClose: 5000,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "light",
+        });
+      } finally {
+        setIsTableLoading(false);
+      }
+    }
+
+    const getGraphInfo = async () => {
+      try {
+        setIsGraphLoading(true);
+        const response = await API.get(`captions/${tid}/`);
+        if (!response.data) {
+          toast.error("No captions for this truck", {
+            position: "top-center",
+            autoClose: 5000,
+            pauseOnHover: true,
+            draggable: true,
+            theme: "light",
+          });
+          return;
+        }
+        setGraphsData(response.data);
+      } catch (error) {
+        toast.error(error?.response?.message ?? "Error", {
+          position: "top-center",
+          autoClose: 5000,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "light",
+        });
+      } finally {
+        setIsGraphLoading(false);
+      }
+    }
+
+    Promise.all([getTableInfo(), getGraphInfo()]);
+  }, []);
 
   return (
-    <Layout isLoading={isLoading}>
-      <RealTimeResponsivnessElementContent />
+    <Layout isLoading={isTableLoading || isGraphLoading}>
+      <RealTimeResponsivnessElementContent
+        table={tablesData}
+        graph={graphsData}
+      />
     </Layout>
   );
 };

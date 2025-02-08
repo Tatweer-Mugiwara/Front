@@ -48,7 +48,7 @@ export default function TrucksList({
         <div className="flex justify-center flex-col gap-10 w-full max-w-[1500px] mx-auto mt-4">
           <div className="keen-slider w-full" ref={sliderRef}>
             {
-              [...new Array(7)].map((truck, index) => (
+              data.map((truck, index) => (
                 <TruckItem key={index} truck={truck} />
               ))
             }
@@ -59,7 +59,7 @@ export default function TrucksList({
                 <button onClick={() => instanceRef.current.prev()} className="hover:opacity-50 opacity-100 transition-all" disabled={currentSlide === 0}>
                   <img src="/images/Carousel/left-arrow.svg" alt="Left Arrow" />
                 </button>
-                <p className="font-unbounded font-semibold text-mainColor text-2xl">{currentSlide}/{data.length}</p>
+                <p className="font-unbounded font-semibold text-mainColor text-2xl">{currentSlide+1}/{data.length}</p>
                 <button onClick={() => instanceRef.current.next()} className="hover:opacity-50 opacity-100 transition-all" disabled={currentSlide === data?.length}>
                   <img src="/images/Carousel/right-arrow.svg" alt="Right Arrow" />
                 </button>

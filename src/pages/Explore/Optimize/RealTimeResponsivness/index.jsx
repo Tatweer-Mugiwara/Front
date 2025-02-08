@@ -3,8 +3,16 @@ import { toast } from "react-toastify";
 import Layout from "../../../../components/Layout";
 import RealTimeResponsivnessContent from "../../../../components/Optimization/RealTimeResponsivness";
 import API from "../../../../utils/api-client";
+import { useLoadScript } from "@react-google-maps/api";
+import { libraries } from "../../../../../constants";
 
 const RealTimeResponsivness = () => {
+
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAP_API_KEY,
+    libraries: libraries,
+  })
+
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -40,7 +48,7 @@ const RealTimeResponsivness = () => {
     fetchData();
   }, []);
   return (
-    <Layout isLoading={isLoading}>
+    <Layout isLoading={isLoading || !isLoaded}>
       <RealTimeResponsivnessContent trucks={data} />
     </Layout>
   );
