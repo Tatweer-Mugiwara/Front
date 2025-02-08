@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import InputComponent from "./InputComponent";
 import OutputComponent from "./OutputComponent";
 import TreatmentComponent from "./TreatmentComponent";
+import { Link } from "react-router-dom";
 
 const RouteConsolidationContent = () => {
   const [selectedTab, setSelectedTab] = useState("input");
@@ -14,9 +15,9 @@ const RouteConsolidationContent = () => {
     <div className="flex flex-col items-center w-full">
       <div className="w-[80%] flex flex-row justify-between items-center">
         <h1 className="text-3xl font-bold text-mainColor">
-          Inter-Truck load Optimization :
+          Inter-Truck load Optimization:
         </h1>
-        <button className="px-8 py-2 bg-mainColor text-white">Back</button>
+        <Link to='/' className="px-8 py-2 bg-mainColor text-white">Back</Link>
       </div>
 
       <div className="w-[80%] flex flex-row space-x-4 ml-16 mt-8">
@@ -24,7 +25,7 @@ const RouteConsolidationContent = () => {
           className={`px-8 py-2 ${
             selectedTab === "input"
               ? "bg-mainColor text-white"
-              : "bg-transparent border border-mainColor text-gray-700"
+              : "bg-transparent border border-mainColor border-b-transparent text-gray-700"
           }`}
           onClick={() => handleTabChange("input")}
         >
@@ -34,7 +35,7 @@ const RouteConsolidationContent = () => {
           className={`px-8 py-2 ${
             selectedTab === "treatment"
               ? "bg-mainColor text-white"
-              : "bg-transparent border border-mainColor text-gray-700"
+              : "bg-transparent border border-mainColor border-b-transparent text-gray-700"
           }`}
           onClick={() => handleTabChange("treatment")}
         >
@@ -44,7 +45,7 @@ const RouteConsolidationContent = () => {
           className={`px-8 py-2 ${
             selectedTab === "output"
               ? "bg-mainColor text-white"
-              : "bg-transparent border border-mainColor text-gray-700"
+              : "bg-transparent border border-mainColor border-b-transparent text-gray-700"
           }`}
           onClick={() => handleTabChange("output")}
         >
@@ -53,7 +54,7 @@ const RouteConsolidationContent = () => {
       </div>
 
       <div
-        className={`w-[80%] mb-4 px-8 py-4 flex flex-col items-center  border border-mainColor mt-8 transition-all duration-300`}
+        className={`w-[80%] mb-4 px-8 py-4 flex flex-col items-center  border border-mainColor transition-all duration-300`}
       >
         {selectedTab === "input" && <InputComponent />}
         {selectedTab === "treatment" && (

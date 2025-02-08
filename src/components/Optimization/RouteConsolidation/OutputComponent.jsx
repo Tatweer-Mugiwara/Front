@@ -3,6 +3,7 @@ import API from "../../../utils/api-client";
 import { Check } from "lucide-react";
 import { X } from "lucide-react";
 import { toast } from "react-toastify";
+import Map from "../../Map";
 
 const OutputComponent = ({ handleTabChange }) => {
   const [data, setData] = useState([]);
@@ -42,6 +43,16 @@ const OutputComponent = ({ handleTabChange }) => {
       try {
         setIsLoading(true);
         const response = await API.post("optimization/suggest/");
+        if (!response.data.optimizedOrders) {
+          toast.error("No optimized orders found", {
+            position: "top-center",
+            autoClose: 5000,
+            pauseOnHover: true,
+            draggable: true,
+            theme: "light",
+          });
+          return;
+        }
         setData(response.data);
         setSuggestions(response.data.optimizedOrders);
       } catch (error) {
@@ -61,11 +72,11 @@ const OutputComponent = ({ handleTabChange }) => {
   }, []);
 
   return (
-    <div className="">
+    <div className="w-full">
       <p className="text-mainColor text-xl font-semibold">
         SHOWING the final planified deliveries with their informations :
       </p>
-      <img src="/images/Optimization/image.png" className="mt-4" alt="" />
+      <Map />
       <div className="overflow-x-auto mt-4">
         <table className="min-w-full bg-white border">
           <thead className="bg-mainColor text-white">

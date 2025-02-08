@@ -1,6 +1,6 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import API from "../../../utils/api-client";
+import Map from "../../Map";
 
 const InputComponent = () => {
   //   const [data, setData] = useState([]);
@@ -12,7 +12,7 @@ const InputComponent = () => {
       try {
         setIsLoading(true);
         const response = await API.get("orders/");
-        setData(response.data.orders);
+        setData(response.data);
       } catch (error) {
         toast.error(error?.response?.message ?? "Error", {
           position: "top-center",
@@ -30,8 +30,10 @@ const InputComponent = () => {
   }, []);
 
   return (
-    <div className="">
-      <img src="/images/Optimization/image.png" className="mt-4" alt="" />
+    <div className="w-full">
+      <div className="flex h-[70vh] w-full">
+        <Map />
+      </div>
       <div className="overflow-x-auto mt-4">
         <table className="min-w-full bg-white border">
           <thead className="bg-mainColor text-white">

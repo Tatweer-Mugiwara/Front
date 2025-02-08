@@ -65,7 +65,7 @@ const Navbar = () => {
         <ul className="flex gap-2 md:gap-10 items-center">
           <li className="flex transition-all hover:translate-y-1">
             <NavLink
-              to="/user/projects"
+              to="/explore"
               className={({ isActive }) => (isActive ? "underline" : "")}
             >
               RouteGenius
@@ -73,7 +73,7 @@ const Navbar = () => {
           </li>
           <li className="flex transition-all hover:translate-y-1">
             <NavLink
-              to="/user/upgrade"
+              to="/upgrade"
               className={({ isActive }) => (isActive ? "underline" : "")}
             >
               Upgrade
@@ -81,7 +81,7 @@ const Navbar = () => {
           </li>
           <li className="flex transition-all hover:translate-y-1">
             <NavLink
-              to="/user/support"
+              to="/support"
               className={({ isActive }) => (isActive ? "underline" : "")}
             >
               Support

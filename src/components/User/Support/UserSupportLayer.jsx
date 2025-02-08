@@ -1,18 +1,15 @@
-import React from "react";
-import Navbar from "../Navbar";
 import SupportContent from "./SupportContent";
 import FrequentlyAskedQuestions from "./FrequentlyAskedQuestions";
+import Layout from "../../Layout";
 
-const UserSupportLayout = ({ children, isLoading }) => {
+const UserSupportLayout = () => {
   return (
-    <div>
-      <Navbar />
-      {isLoading ? <Loading /> : <SupportContent />}
-      {isLoading ? <Loading /> : <FrequentlyAskedQuestions />}
-      <div className="bg-mainColor font-unbounded font-bold text-center py-3 text-white">
-        2024 RouteGenius.All Rights Reserved.
+    <Layout>
+      <div>
+        <SupportContent />
+        <FrequentlyAskedQuestions />
       </div>
-    </div>
+    </Layout>
   );
 };
 
