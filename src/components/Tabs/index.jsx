@@ -26,7 +26,7 @@ const Tabs = ({
         </h1>
         <Link to='/' className="px-8 py-3 bg-mainColor text-white font-unbounded font-bold">Back</Link>
       </div>
-      <div className="w-[80%] flex flex-row space-x-4 ml-16 mt-10 pointer-events-none">
+      <div className="w-[80%] flex flex-row space-x-4 ml-16 mt-10">
         {
             headers.map((header, index) => (
                 <button

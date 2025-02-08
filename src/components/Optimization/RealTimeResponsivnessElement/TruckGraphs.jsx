@@ -6,6 +6,19 @@ export default function TruckGraphs({
 }) {
     const [filter, setFilter] = useState("");
     const [dataF, _setDataF] = useState(data);
+
+    const filterData = (filter) => {
+      switch (filter) {
+        case "temperature":
+          _setDataF(data.filter(e => e.key === "temperature"));
+          break;
+        case "CO2":
+          _setDataF(data.filter(e => e.key === "CO2"));
+          break;
+        default:
+          break;
+      }
+    }
     return (
       <div className="w-full outline-none">
         <div className="overflow-x-auto mt-4 flex flex-col gap-10">
@@ -15,12 +28,10 @@ export default function TruckGraphs({
             </p>
             <select className="px-16 py-3 font-unbounded font-bold transition-all bg-mainColor text-white text-center" onChange={(e) => {
               setFilter(e.target.value);
+              filterData(e.target.value);
             }} value={filter}>
-              <option value="CO2">Sensors</option>
-              <option value="Heat">Heat</option>
-              <option value="Termal">Termal</option>
-              <option value="Tires">Tires</option>
-              <option value="O2">O2</option>
+              <option value="temperature">Termal</option>
+              <option value="CO2">CO2</option>
             </select>
           </div>
           <div className="flex justify-center flex-col gap-10 w-full mt-4 overflow-hidden">
@@ -28,13 +39,13 @@ export default function TruckGraphs({
                 className="w-full"
                 options={{
                   xaxis: {
-                    categories: (dataF ?? [])?.map((e) => e.createdAt.split("T")[1].split(".")[0]),
+                    categories: (dataF ?? [])?.map((e, i) => i),
                     colors: ['#4ecdc4', "#ed5565", "#43b1a9"],
                   },
                 }}
                 series={[{
                     name: 'Total',
-                    data: [(dataF ?? [])?.map((e) => e.value)],
+                    data: (dataF ?? [])?.map((e) => parseInt(e.value)),
                 }]}
                 type="line"
                 height={350}

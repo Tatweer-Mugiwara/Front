@@ -57,7 +57,7 @@ const RealTimeResponsivnessElement = () => {
           });
           return;
         }
-        setGraphsData(response.data);
+        setGraphsData(response.data?.captions);
       } catch (error) {
         toast.error(error?.response?.message ?? "Error", {
           position: "top-center",
