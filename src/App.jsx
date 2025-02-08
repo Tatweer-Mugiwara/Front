@@ -50,7 +50,7 @@ function App() {
           <Route path="routing" element={<PrivateRoute element={<Routing />} />} />
           <Route path="real-time-responsivness" element={<PrivateRoute element={<RealTimeResponsivness />} />} />
           <Route path="real-time-responsivness/:tid" element={<PrivateRoute element={<RealTimeResponsivnessElement />} />} />
-          {/* <Route path="planification-coordination" element={<PrivateRoute element={<Routing />} />} /> */}
+          {/* <Route path="planification-coordination" element={<PrivateRoute element={<PlanificationCoordination />} />} /> */}
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

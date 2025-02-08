@@ -42,10 +42,6 @@ const RoutingContent = () => {
                 setToUpdateVal("treatment");
               }}
               className="mt-8 px-8 py-3 bg-mainColor text-white font-unbounded font-bold"
-              disabled={data.length === 0}
-              style={{
-                opacity: data.length === 0 ? 0.5 : 1,
-              }}
             >
               Start
             </button>

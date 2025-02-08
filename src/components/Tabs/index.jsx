@@ -20,14 +20,13 @@ const Tabs = ({
 
   return (
     <div className="flex flex-col items-center w-full">
-      <div className="w-[80%] flex flex-row justify-between mt-5 items-center">
+      <div className="w-[80%] flex flex-row justify-between mt-8 mb-4 items-center">
         <h1 className="text-3xl font-bold text-mainColor">
         {title}:
         </h1>
-        <Link to='/' className="mt-8 px-8 py-3 bg-mainColor text-white font-unbounded font-bold">Back</Link>
+        <Link to='/' className="px-8 py-3 bg-mainColor text-white font-unbounded font-bold">Back</Link>
       </div>
-
-      <div className="w-[80%] flex flex-row space-x-4 ml-16 mt-10">
+      <div className="w-[80%] flex flex-row space-x-4 ml-16 mt-10 pointer-events-none">
         {
             headers.map((header, index) => (
                 <button

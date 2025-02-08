@@ -49,7 +49,7 @@ export default function TrucksList({
           <div className="keen-slider w-full" ref={sliderRef}>
             {
               data.map((truck, index) => (
-                <TruckItem key={index} truck={truck} />
+                <TruckItem key={index} truck={truck} index={index} />
               ))
             }
           </div>
