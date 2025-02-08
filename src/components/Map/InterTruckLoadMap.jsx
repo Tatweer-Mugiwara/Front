@@ -49,7 +49,7 @@ function InterTruckLoadMap({ hoveredOrder = null }) {
           (result, status) => {
             if (status === window.google.maps.DirectionsStatus.OK) {
               setDirections(result);
-              setCenter(origin); // Centre la carte sur le point de départ
+              setCenter(origin); 
             } else {
               toast.error("Erreur lors du calcul de l'itinéraire");
             }

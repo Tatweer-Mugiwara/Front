@@ -3,7 +3,7 @@ export const SERVER_URL = {
     production: "my-prod-api",
 }
 
-export const DEFAULT_ZOOM = 18;
+export const DEFAULT_ZOOM = 8 ;
 
 // Google map libraries
 export const libraries = ["places"];

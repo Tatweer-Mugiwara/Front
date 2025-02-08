@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 import API from "../../../utils/api-client";
 import InterTruckLoadMap from "../../Map/InterTruckLoadMap";
+import { Layout } from "lucide-react";
 
-const InputComponent = ({
-  data,
-  setData
-}) => {
+const InputComponent = ({ data, setData }) => {
   const [_isLoading, setIsLoading] = useState(false);
-  const [hoveredOrder, setHoveredOrder] = useState(null); 
+  const [hoveredOrder, setHoveredOrder] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -53,10 +51,11 @@ const InputComponent = ({
             {data.map((row, index) => (
               <tr
                 key={index}
-                className={`cursor-pointer transition-colors duration-300 hover:bg-gray-300 ${row.client =="Combined Order" ? "bg-green-500" :""} `}
+                className={`cursor-pointer transition-colors duration-300 hover:bg-gray-300 ${
+                  row.client == "Combined Order" ? "bg-green-500" : ""
+                } `}
                 onMouseEnter={() => setHoveredOrder(row)}
-                onMouseLeave={() => setHoveredOrder(null)} 
-
+                onMouseLeave={() => setHoveredOrder(null)}
               >
                 <td className="border border-mainColor px-4 py-2 text-mainColor">
                   {row.client}
@@ -91,11 +90,11 @@ const InputComponent = ({
             ))}
           </tbody>
         </table>
-        {
-          data.length === 0 && !_isLoading && (
-            <div className="text-center text-mainColor mt-4 pt-5 border-2 relative -top-4 border-mainColor border-t-transparent pb-5">No data</div>
-          )
-        }
+        {data.length === 0 && !_isLoading && (
+          <div className="text-center text-mainColor mt-4 pt-5 border-2 relative -top-4 border-mainColor border-t-transparent pb-5">
+            No data
+          </div>
+        )}
       </div>
     </div>
   );

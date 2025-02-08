@@ -1,17 +1,55 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import InputComponent from "./InputComponent";
 import OutputComponent from "./OutputComponent";
 import TraitmentComponent from "./TraitmentComponent";
 import Tabs from "../../Tabs";
+import { toast } from "react-toastify";
 
 const RoutingContent = () => {
   const [toUpdateVal, setToUpdateVal] = useState(null);
+  const [selectedSize, setSelectedSize] = useState({
+    name: "Without size",
+    value: 0,
+  });
   const [data, setData] = useState([
     {
-      name: 'Small size',
-      value: 200
-    }
+      name: "Without size",
+      value: 0,
+    },
+    {
+      name: "Small size",
+      value: 200,
+    },
+    {
+      name: "Medium size",
+      value: 2000,
+    },
+    {
+      name: "Large size",
+      value: 20000,
+    },
   ]);
+  const [selectedCities, setSelectedCities] = useState([]);
+  const [result, setResult] = useState(null);
+
+  const handleStart = async () => {
+    if (selectedCities.length === 0) {
+      return toast.error("Choose cities", {
+        position: "top-center",
+        autoClose: 5000,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "light",
+      });
+    }
+
+    alert(
+      `Selected Cities: ${selectedCities.join(", ")}\nSelected Size: ${
+        selectedSize.name
+      }`
+    );
+    setToUpdateVal("treatment");
+  };
 
   return (
     <Tabs
@@ -21,15 +59,29 @@ const RoutingContent = () => {
       content={[
         {
           header: "input",
-          component: <InputComponent
-            data={data}
-            setData={setData}
-          />,
+          component: (
+            <InputComponent
+              data={data}
+              setData={setData}
+              onCitiesChange={setSelectedCities}
+              selectedSize={selectedSize}
+              setSelectedSize={setSelectedSize}
+            />
+          ),
           key: "input",
         },
         {
           header: "treatment",
-          component: <TraitmentComponent />,
+          component: (
+            <TraitmentComponent
+              handleTabChange={setToUpdateVal}
+              selectedCities={selectedCities}
+              selectedSize={selectedSize}
+              calculateDurationMatrix
+              result={result}
+              setResult={setResult}
+            />
+          ),
           key: "treatment",
         },
         {
@@ -44,38 +96,21 @@ const RoutingContent = () => {
           component: (
             <div className="flex w-full flex-col gap-5 mt-16">
               <p className="text-mainColor text-2xl font-semibold">
-              See the simulation of the problem resolution:
+                See the simulation of the problem resolution:
               </p>
               <button
-                onClick={() => {
-                  setToUpdateVal("treatment");
-                }}
+                onClick={handleStart}
                 className="px-16 py-3 bg-mainColor text-white w-fit font-unbounded font-bold"
               >
                 Start
               </button>
             </div>
           ),
-          key: 1
+          key: 1,
         },
         {
           header: "treatment",
-          component: (
-            <div className="flex w-full flex-col gap-5 mt-16">
-              <p className="text-mainColor text-2xl font-semibold">
-                See the final result of the problem resolution:
-              </p>
-              <button
-                onClick={() => {
-                  setToUpdateVal("output");
-                }}
-                className="px-16 py-3 bg-mainColor text-white w-fit font-unbounded font-bold"
-              >
-                Finish
-              </button>
-            </div>
-          ),
-          key: 2
+          key: 2,
         },
         {
           header: "output",
@@ -86,13 +121,14 @@ const RoutingContent = () => {
               }}
               className="px-16 py-3 bg-mainColor text-white w-fit font-unbounded font-bold mt-10 flex self-start"
             >
-              Restrat
+              Restart
             </button>
           ),
-          key: 3
-        }
+          key: 3,
+        },
       ]}
     />
-)}
+  );
+};
 
 export default RoutingContent;
