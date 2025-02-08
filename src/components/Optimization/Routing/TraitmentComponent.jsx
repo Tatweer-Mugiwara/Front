@@ -8,8 +8,8 @@ const TreatmentComponent = ({
   handleTabChange,
   selectedCities,
   selectedSize,
-  result, 
-  setResult, 
+  result,
+  setResult,
 }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -82,13 +82,6 @@ const TreatmentComponent = ({
     };
 
     fetchData();
-
-    // const timer = setTimeout(() => {
-    //   setIsLoading(false);
-    //   // handleTabChange("output");
-    // }, 2000);
-
-    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -115,19 +108,19 @@ const TreatmentComponent = ({
             </div>
           ) : (
             <div>
-          <p className="text-mainColor text-2xl font-semibold">
-            See the final result of the problem resolution:
-          </p>
-          <RouteDisplay result={result} selectedCities={selectedCities} />
-          <button
-            onClick={() => {
-              handleTabChange("input");
-            }}
-            className="px-16 py-3 bg-mainColor text-white w-fit font-unbounded font-bold"
-          >
-            Finish
-          </button>
-        </div>
+              <p className="text-mainColor text-2xl font-semibold">
+                See the final result of the problem resolution:
+              </p>
+              <RouteDisplay result={result} selectedCities={selectedCities} />
+              <button
+                onClick={() => {
+                  handleTabChange("output");
+                }}
+                className="px-16 py-3 bg-mainColor text-white w-fit font-unbounded font-bold"
+              >
+                Finish
+              </button>
+            </div>
           )}
         </div>
       </div>

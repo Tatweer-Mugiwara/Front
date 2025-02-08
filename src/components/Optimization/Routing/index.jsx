@@ -86,7 +86,13 @@ const RoutingContent = () => {
         },
         {
           header: "output",
-          component: <OutputComponent />,
+          component: (
+            <OutputComponent
+              handleTabChange={setToUpdateVal}
+              result={result}
+              selectedCities={selectedCities}
+            />
+          ),
           key: "output",
         },
       ]}
