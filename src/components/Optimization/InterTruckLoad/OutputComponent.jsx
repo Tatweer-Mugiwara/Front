@@ -73,8 +73,8 @@ const OutputComponent = ({ handleTabChange }) => {
 
   return (
     <div className="w-full">
-      <p className="text-mainColor text-xl font-semibold">
-        SHOWING the final planified deliveries with their informations :
+      <p className="text-mainColor text-2xl font-semibold">
+        Showing the final planified deliveries with their informations:
       </p>
       <Map />
       <div className="overflow-x-auto mt-4">
@@ -83,7 +83,7 @@ const OutputComponent = ({ handleTabChange }) => {
             <tr className="">
               <th className="px-4 py-2">Client</th>
               <th className="px-4 py-2">Source</th>
-              <th className="px-4 py-2">In road</th>
+              <th className="px-4 py-2">In Road</th>
               <th className="px-4 py-2">Destination</th>
               <th className="px-4 py-2">Depart Time</th>
               <th className="px-4 py-2">Max Weight</th>
@@ -126,8 +126,8 @@ const OutputComponent = ({ handleTabChange }) => {
             ))}
           </tbody>
         </table>
-        <p className="text-mainColor text-xl font-semibold mt-8">
-          IF this plan arrange you , would you like the database To be updated ?
+        <p className="text-mainColor text-2xl font-semibold mt-8">
+          If this plan arrange you, would you like the database to be updated?
         </p>
       </div>
       <div className="flex flex-row space-x-4 mt-4">

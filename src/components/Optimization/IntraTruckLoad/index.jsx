@@ -65,7 +65,7 @@ const IntraTruckLoadContent = () => {
                 }}
                 className="px-16 py-3 bg-mainColor w-fit text-white font-unbounded font-bold"
                 >
-                start
+                Start
                 </button>
               </div>
               ),

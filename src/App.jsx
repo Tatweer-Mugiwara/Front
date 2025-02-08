@@ -3,6 +3,7 @@ import { ToastContainer } from "react-toastify";
 import PrivateRoute from "./middleware/PrivateRoute";
 
 import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
 
 import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/Register";
@@ -43,6 +44,7 @@ function App() {
           <Route path="inter-truck-load" element={<PrivateRoute element={<InterTruckLoadContent />} />} />
           <Route path="intra-truck-load" element={<PrivateRoute element={<IntraTruckLoad />} />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <ToastContainer />
     </div>

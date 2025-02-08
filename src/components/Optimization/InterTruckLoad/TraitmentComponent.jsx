@@ -15,7 +15,7 @@ const TreatmentComponent = ({ handleTabChange }) => {
 
   return (
     <div className="w-full mt-4">
-      <p className="text-mainColor text-xl font-semibold">
+      <p className="text-mainColor text-2xl font-semibold">
         PLEASE WAIT while Data is processed :
       </p>
       <div className="flex justify-center">
@@ -27,7 +27,7 @@ const TreatmentComponent = ({ handleTabChange }) => {
           )}
         </div>
       </div>
-      <p className="text-mainColor text-xl font-semibold">
+      <p className="text-mainColor text-2xl font-semibold">
         See the FINAL RESULT of the problem solution :
       </p>
     </div>

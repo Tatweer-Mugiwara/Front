@@ -73,7 +73,7 @@ const OutputComponent = ({ handleTabChange }) => {
 
   return (
     <div className="w-full">
-      <p className="text-mainColor text-xl font-semibold">
+      <p className="text-mainColor text-2xl font-semibold">
         SHOWING the final planified deliveries with their informations :
       </p>
       <Map />
@@ -126,7 +126,7 @@ const OutputComponent = ({ handleTabChange }) => {
             ))}
           </tbody>
         </table>
-        <p className="text-mainColor text-xl font-semibold mt-8">
+        <p className="text-mainColor text-2xl font-semibold mt-8">
           IF this plan arrange you , would you like the database To be updated ?
         </p>
       </div>

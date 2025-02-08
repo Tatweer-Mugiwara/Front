@@ -15,8 +15,8 @@ const TraitmentComponent = ({ handleTabChange }) => {
 
   return (
     <div className="w-full mt-4">
-      <p className="text-mainColor text-xl font-semibold">
-        PLEASE WAIT while Data is processed :
+      <p className="text-mainColor text-2xl font-semibold">
+        Please wait while Data is being processed:
       </p>
       <div className="flex justify-center">
         <div className="h-[50vh] flex items-center justify-center">
