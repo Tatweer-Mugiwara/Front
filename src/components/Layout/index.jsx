@@ -10,7 +10,7 @@ const Layout = ({ children, isLoading }) => {
                     isLoading ? <Loading /> : children
                 }
             </main>
-            <div className="bg-mainColor font-unbounded font-bold text-center py-3 text-white">
+            <div className="bg-mainColor font-unbounded font-bold text-center py-10 text-white">
                 2024 RouteGenius.All Rights Reserved.
             </div>
         </div>

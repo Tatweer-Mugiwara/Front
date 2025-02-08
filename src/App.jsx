@@ -20,8 +20,10 @@ import InterTruckLoadContent from "./pages/Explore/Optimize/InterTruckLoad";
 import IntraTruckLoad from "./pages/Explore/Optimize/IntraTruckLoad";
 import Routing from "./pages/Explore/Optimize/Routing";
 import RealTimeResponsivness from "./pages/Explore/Optimize/RealTimeResponsivness";
+import RealTimeResponsivnessElement from "./pages/Explore/Optimize/RealTimeResponsivnessElement";
 
 import "react-toastify/dist/ReactToastify.css";
+import "keen-slider/keen-slider.min.css";
 
 function App() {
   return (
@@ -47,7 +49,7 @@ function App() {
           <Route path="intra-truck-load" element={<PrivateRoute element={<IntraTruckLoad />} />} />
           <Route path="routing" element={<PrivateRoute element={<Routing />} />} />
           <Route path="real-time-responsivness" element={<PrivateRoute element={<RealTimeResponsivness />} />} />
-          {/* <Route path="routing/:tid" element={<PrivateRoute element={<Routing />} />} /> */}
+          <Route path="real-time-responsivness/:tid" element={<PrivateRoute element={<RealTimeResponsivnessElement />} />} />
           {/* <Route path="planification-coordination" element={<PrivateRoute element={<Routing />} />} /> */}
         </Route>
         <Route path="*" element={<NotFound />} />
