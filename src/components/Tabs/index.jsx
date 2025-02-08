@@ -24,7 +24,7 @@ const Tabs = ({
         <h1 className="text-3xl font-bold text-mainColor">
         {title}:
         </h1>
-        <Link to='/' className="px-8 py-2 bg-mainColor text-white">Back</Link>
+        <Link to='/' className="mt-8 px-8 py-3 bg-mainColor text-white font-unbounded font-bold">Back</Link>
       </div>
 
       <div className="w-[80%] flex flex-row space-x-4 ml-16 mt-10">
@@ -33,10 +33,8 @@ const Tabs = ({
                 <button
                     key={index}
                     className={`px-8 py-2 ${
-                        selectedTab === header
-                        ? "bg-mainColor text-white"
-                        : "bg-transparent border border-mainColor border-b-transparent text-gray-700 capitalize"
-                    }`}
+                        (selectedTab === header) && "!bg-mainColor !text-white"}
+                        bg-transparent border border-mainColor border-b-transparent bg-white text-mainColor capitalize font-unbounded font-bold`}
                     onClick={() => handleTabChange(header)}
                 >
                     {header}

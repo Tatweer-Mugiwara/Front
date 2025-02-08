@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import InputComponent from "./InputComponent";
 import OutputComponent from "./OutputComponent";
-import TreatmentComponent from "./TreatmentComponent";
+import TraitmentComponent from "./TraitmentComponent";
 import Tabs from "../../Tabs";
 
 const InterTruckLoadContent = () => {
@@ -20,7 +20,7 @@ const InterTruckLoadContent = () => {
         },
         {
           header: "treatment",
-          component: <TreatmentComponent />,
+          component: <TraitmentComponent />,
           key: "treatment",
         },
         {
@@ -37,7 +37,7 @@ const InterTruckLoadContent = () => {
               onClick={() => {
                 setToUpdateVal("treatment");
               }}
-              className="mt-8 px-8 py-2 bg-mainColor text-white"
+              className="mt-8 px-8 py-3 bg-mainColor text-white font-unbounded font-bold"
             >
               Start
             </button>
@@ -51,7 +51,7 @@ const InterTruckLoadContent = () => {
               onClick={() => {
                 setToUpdateVal("output");
               }}
-              className="mt-8 px-8 py-2 bg-mainColor text-white"
+              className="mt-8 px-8 py-3 bg-mainColor text-white font-unbounded font-bold"
             >
               Finish
             </button>
