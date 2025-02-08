@@ -43,11 +43,6 @@ const RoutingContent = () => {
       });
     }
 
-    alert(
-      `Selected Cities: ${selectedCities.join(", ")}\nSelected Size: ${
-        selectedSize.name
-      }`
-    );
     setToUpdateVal("treatment");
   };
 
