@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import API from "../../../utils/api-client";
 import InterTruckLoadMap from "../../Map/InterTruckLoadMap";
+import { Layout } from "lucide-react";
 
 const InputComponent = ({
   data,
@@ -53,10 +54,11 @@ const InputComponent = ({
             {data.map((row, index) => (
               <tr
                 key={index}
-                className={`cursor-pointer transition-colors duration-300 hover:bg-gray-300 ${row.client =="Combined Order" ? "bg-green-500" :""} `}
+                className={`cursor-pointer transition-colors duration-300 hover:bg-gray-300 ${
+                  row.client == "Combined Order" ? "bg-green-500" : ""
+                } `}
                 onMouseEnter={() => setHoveredOrder(row)}
-                onMouseLeave={() => setHoveredOrder(null)} 
-
+                onMouseLeave={() => setHoveredOrder(null)}
               >
                 <td className="border border-mainColor px-4 py-2 text-mainColor">
                   {row.client}
