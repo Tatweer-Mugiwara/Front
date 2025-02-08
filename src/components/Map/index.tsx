@@ -1,79 +1,78 @@
-// @ts-nocheck
-import {memo, useCallback, useEffect, useState} from 'react';
-import {GoogleMap, DirectionsRenderer, MarkerF} from '@react-google-maps/api';
-import { DEFAULT_ZOOM } from '../../../constants';
-import { getGeocode } from 'use-places-autocomplete';
+import { memo, useEffect, useState } from "react";
+import { GoogleMap, DirectionsRenderer } from "@react-google-maps/api";
+import { getGeocode, getLatLng } from "use-places-autocomplete";
 import { toast } from "react-toastify";
 
 const containerStyle = {
-    width: '100%',
-    height: 'auto'
+  width: "100%",
+  height: "100%",
 };
 
-function Map() {
-    const [directions, setDirections] = useState(null);
-    const [center, setCenter] = useState({
-        lat: -3.745,
-        lng: -38.523
-    });
-    const [marker, setMarker] = useState({
-        lat: -3.745,
-        lng: -38.523
-    });
+function Map({ hoveredOrder = null }) {
+  const [directions, setDirections] = useState(null);
+  const [center, setCenter] = useState({
+    lat: 36.737232,
+    lng: 3.086472, 
+  });
 
-    const changeDestination = async (e) => {
-        const { lat: getLat, lng: getLng } = e.latLng;
-        const latitude = e.latLng.lat();
-        const longitude = e.latLng.lng();
-        setMarker({ lat: latitude, lng: longitude });
-        setCenter({ lat: latitude, lng: longitude });
-        getGeocode({
-            location: { lat: latitude, lng: longitude },
-        }).then((r) => {
-            const currentAddress = r[0].formatted_address;
-        })
-        .catch((e) => {
-            toast.error('Something went wrong, try again', {
-                position: "top-center",
-                autoClose: 5000,
-                pauseOnHover: true,
-                draggable: true,
-                theme: "light",
-            })
-        });
+  useEffect(() => {
+    if (!hoveredOrder) {
+      setDirections(null);
+      return;
     }
 
-    const [map, setMap] = useState(null)
-    const [mapAnimation, setMapAnimation] = useState(null)
-    const onLoad = useCallback(function callback(map) {
-        const bounds = new window.google.maps.LatLngBounds(center);
-        map.fitBounds(bounds);        
-        setMap(map)
-        setMapAnimation(window.google.maps.Animation.DROP);
-    }, [])
-    const onUnmount = useCallback(function callback(map) {
-        setMap(null)
-    }, [])
+    const fetchDirections = async () => {
+      const directionsService = new window.google.maps.DirectionsService();
 
-    return (
-        <GoogleMap
-            mapContainerStyle={containerStyle}
-            center={center}
-            onLoad={onLoad}
-            onUnmount={onUnmount}
-            options={{
-                mapTypeControl: false,
-                zoomControl: true,
-                zoomControlOptions: {
-                    position: google.maps.ControlPosition.RIGHT_TOP
-                },
-                zoom: DEFAULT_ZOOM
-            }}
-            onClick={changeDestination}
-        >
-            <MarkerF position={marker} animation={mapAnimation} />
-        </GoogleMap>
-    );
+      try {
+        const originGeo = await getGeocode({ address: hoveredOrder.departure });
+        const origin = await getLatLng(originGeo[0]);
+
+        const destinationGeo = await getGeocode({ address: hoveredOrder.destination });
+        const destination = await getLatLng(destinationGeo[0]);
+
+        const waypoints = hoveredOrder.intermediateDestinations?.map(async (city) => {
+          const cityGeo = await getGeocode({ address: city });
+          return { location: await getLatLng(cityGeo[0]), stopover: true };
+        });
+
+        const resolvedWaypoints = waypoints ? await Promise.all(waypoints) : [];
+
+        directionsService.route(
+          {
+            origin,
+            destination,
+            waypoints: resolvedWaypoints,
+            travelMode: window.google.maps.TravelMode.DRIVING,
+          },
+          (result, status) => {
+            if (status === window.google.maps.DirectionsStatus.OK) {
+              setDirections(result);
+              setCenter(origin); // Centre la carte sur le point de départ
+            } else {
+              toast.error("Erreur lors du calcul de l'itinéraire");
+            }
+          }
+        );
+      } catch (error) {
+        console.error("Erreur de géolocalisation :", error);
+        toast.error("Impossible de récupérer l'itinéraire");
+      }
+    };
+
+    fetchDirections();
+  }, [hoveredOrder]);
+
+  return (
+    <GoogleMap
+      mapContainerStyle={containerStyle}
+      center={center}
+      zoom={hoveredOrder ? 6 : 10} // Ajuste le zoom si hoveredOrder est null
+      options={{ mapTypeControl: false, zoomControl: true }}
+    >
+      {directions && <DirectionsRenderer directions={directions} />}
+    </GoogleMap>
+  );
 }
 
 export default memo(Map);

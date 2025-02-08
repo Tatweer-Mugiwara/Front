@@ -25,7 +25,7 @@ const InterTruckLoadContent = () => {
         },
         {
           header: "output",
-          component: <OutputComponent />,
+          component: <OutputComponent handleTabChange={setToUpdateVal} />,
           key: "output",
         },
       ]}

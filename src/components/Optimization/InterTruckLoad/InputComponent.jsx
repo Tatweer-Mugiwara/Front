@@ -3,9 +3,9 @@ import API from "../../../utils/api-client";
 import Map from "../../Map";
 
 const InputComponent = () => {
-  //   const [data, setData] = useState([]);
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [hoveredOrder, setHoveredOrder] = useState(null); 
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,12 +32,12 @@ const InputComponent = () => {
   return (
     <div className="w-full">
       <div className="flex h-[70vh] w-full">
-        <Map />
+        <Map hoveredOrder={hoveredOrder} />
       </div>
       <div className="overflow-x-auto mt-4">
         <table className="min-w-full bg-white border border-mainColor">
           <thead className="bg-mainColor text-white">
-            <tr className="">
+            <tr>
               <th className="px-4 py-2">Client</th>
               <th className="px-4 py-2">Source</th>
               <th className="px-4 py-2">In road</th>
@@ -49,7 +49,13 @@ const InputComponent = () => {
           </thead>
           <tbody>
             {data.map((row, index) => (
-              <tr key={index}>
+              <tr
+                key={index}
+                className={`cursor-pointer transition-colors duration-300 hover:bg-gray-300 ${row.client =="Combined Order" ? "bg-green-500" :""} `}
+                onMouseEnter={() => setHoveredOrder(row)}
+                onMouseLeave={() => setHoveredOrder(null)} 
+
+              >
                 <td className="border border-mainColor px-4 py-2 text-mainColor">
                   {row.client}
                 </td>
@@ -58,7 +64,7 @@ const InputComponent = () => {
                 </td>
                 <td className="border border-mainColor px-4 py-2 text-mainColor">
                   {row.intermediateDestinations.length > 0
-                    ? row.intermediateDestinations[0]
+                    ? row.intermediateDestinations.join(" → ")
                     : "/"}
                 </td>
                 <td className="border border-mainColor px-4 py-2 text-mainColor">
@@ -72,7 +78,7 @@ const InputComponent = () => {
                     hour: "2-digit",
                     minute: "2-digit",
                   })}
-                </td>{" "}
+                </td>
                 <td className="border border-mainColor px-4 py-2 text-mainColor">
                   {row.truckMaxWeight} Tonnes
                 </td>

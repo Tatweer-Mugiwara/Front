@@ -9,6 +9,7 @@ const OutputComponent = ({ handleTabChange }) => {
   const [data, setData] = useState([]);
   const [suggestions, setSuggestions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [combinedOrder, setCombinedOrder] = useState(null);
 
   const handleSubmit = async () => {
     try {
@@ -25,6 +26,7 @@ const OutputComponent = ({ handleTabChange }) => {
       });
 
       handleTabChange("input");
+
     } catch (error) {
       toast.error(error?.response?.message ?? "Error", {
         position: "top-center",
@@ -55,6 +57,20 @@ const OutputComponent = ({ handleTabChange }) => {
         }
         setData(response.data);
         setSuggestions(response.data.optimizedOrders);
+        if (response.data.optimizedOrders) {
+          let order = {};
+          order.departure = response.data.optimizedOrders[0].departure;
+          order.destination =
+            response.data.optimizedOrders[
+              response.data.optimizedOrders.length - 1
+            ].destination;
+          order.intermediateDestinations = [];
+          for (let i = 0; i < response.data.optimizedOrders.length - 1; i++) {
+            order.intermediateDestinations[i] =
+              response.data.optimizedOrders[i].destination;
+          }
+          setCombinedOrder(order);
+        }
       } catch (error) {
         toast.error(error?.response?.message ?? "Error", {
           position: "top-center",
@@ -77,9 +93,9 @@ const OutputComponent = ({ handleTabChange }) => {
         Showing the final planified deliveries with their informations:
       </p>
       <div className="flex h-[70vh] w-full mt-5">
-        <Map />
+        <Map hoveredOrder={combinedOrder} />
       </div>
-      <div className="overflow-x-auto mt-4">
+      <div className="overflow-x-auto overflow-y-auto mt-8">
         <table className="min-w-full bg-white border">
           <thead className="bg-mainColor text-white">
             <tr className="">
@@ -128,10 +144,10 @@ const OutputComponent = ({ handleTabChange }) => {
             ))}
           </tbody>
         </table>
-        <p className="text-mainColor text-2xl font-semibold mt-8">
-          If this plan arrange you, would you like the database to be updated?
-        </p>
       </div>
+      <p className="text-mainColor text-2xl font-semibold mt-4">
+        If this plan arrange you, would you like the database to be updated?
+      </p>
       <div className="flex flex-row space-x-4 mt-4">
         <button
           className="py-2 px-4 bg-mainColor text-white  flex items-center"
