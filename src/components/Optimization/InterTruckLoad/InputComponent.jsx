@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import API from "../../../utils/api-client";
 import InterTruckLoadMap from "../../Map/InterTruckLoadMap";
-import { Layout } from "lucide-react";
 
 const InputComponent = ({
   data,
