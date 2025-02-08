@@ -49,7 +49,7 @@ const Tabs = ({
         {
             content.map((item, index) => (
                 <div className="contents" key={index}>
-                    {selectedTab == item.header && item.component}
+                    {(selectedTab == item.header) && item.component}
                 </div>
             ))
         }
@@ -57,7 +57,7 @@ const Tabs = ({
             !!customContent.length &&
             customContent.map((item, index) => (
                 <div className="contents" key={index}>
-                    {selectedTab == item.header && item.component}
+                    {(selectedTab == item.header) && item.component}
                 </div>
             ))
         }

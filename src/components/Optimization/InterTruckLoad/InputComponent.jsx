@@ -6,7 +6,7 @@ const InputComponent = ({
   data,
   setData
 }) => {
-  const [_isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [hoveredOrder, setHoveredOrder] = useState(null); 
 
   useEffect(() => {
@@ -92,7 +92,7 @@ const InputComponent = ({
           </tbody>
         </table>
         {
-          data.length === 0 && !_isLoading && (
+          data.length === 0 && !isLoading && (
             <div className="text-center text-mainColor mt-4 pt-5 border-2 relative -top-4 border-mainColor border-t-transparent pb-5">No data</div>
           )
         }
