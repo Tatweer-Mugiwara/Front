@@ -4,7 +4,7 @@ import OutputComponent from "./OutputComponent";
 import TraitmentComponent from "./TraitmentComponent";
 import Tabs from "../../Tabs";
 
-const InterTruckLoadContent = () => {
+const RoutingContent = () => {
   const [toUpdateVal, setToUpdateVal] = useState(null);
 
   return (
@@ -62,4 +62,4 @@ const InterTruckLoadContent = () => {
     />
 )}
 
-export default InterTruckLoadContent;
+export default RoutingContent;

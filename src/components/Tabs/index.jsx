@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 const Tabs = ({
     title,
-    headers,
-    content,
-    customContent,
+    headers = [],
+    content = [],
+    customContent = [],
     tabValue
 }) => {
   const [selectedTab, setSelectedTab] = useState(headers[0]);
@@ -44,7 +44,7 @@ const Tabs = ({
       </div>
 
       <div
-        className={`w-[80%] mb-4 px-8 py-4 flex flex-col items-center  border border-mainColor transition-all duration-300`}
+        className={`w-[80%] p-10 flex flex-col items-center  border border-mainColor bg-white mb-20 transition-all duration-300`}
       >
         {
             content.map((item, index) => (

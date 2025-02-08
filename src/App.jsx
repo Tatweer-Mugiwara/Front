@@ -18,6 +18,8 @@ import FeaturesContent from "./components/User/Feature/FeatureContent";
 
 import InterTruckLoadContent from "./pages/Explore/Optimize/InterTruckLoad";
 import IntraTruckLoad from "./pages/Explore/Optimize/IntraTruckLoad";
+import Routing from "./pages/Explore/Optimize/Routing";
+import RealTimeResponsivness from "./pages/Explore/Optimize/RealTimeResponsivness";
 
 import "react-toastify/dist/ReactToastify.css";
 
@@ -40,9 +42,12 @@ function App() {
           />
         </Route>
         <Route path="/explore">
-          <Route index element={<PrivateRoute element={<FeaturesContent />} />} />
+          <Route index element={<FeaturesContent />} />
           <Route path="inter-truck-load" element={<PrivateRoute element={<InterTruckLoadContent />} />} />
           <Route path="intra-truck-load" element={<PrivateRoute element={<IntraTruckLoad />} />} />
+          <Route path="routing" element={<PrivateRoute element={<Routing />} />} />
+          <Route path="real-time-responsivness" element={<PrivateRoute element={<RealTimeResponsivness />} />} />
+          {/* <Route path="routing/:tid" element={<PrivateRoute element={<Routing />} />} /> */}
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

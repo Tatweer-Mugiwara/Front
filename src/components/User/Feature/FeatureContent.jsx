@@ -6,12 +6,12 @@ const FeaturesContent = () => {
     {
       title: "Route Optimization",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
-      slug: "route-consolidation",
+      slug: "routing",
     },
     {
       title: "Intra-Truck Load Optimization",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
-      slug: "intra-truck-load-optimization",
+      slug: "intra-truck-load",
     },
     {
       title: "Inter-Truck Load Optimization",
@@ -27,18 +27,13 @@ const FeaturesContent = () => {
       title: "Planification & Coordination",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
       slug: "planification-coordination",
-    },
-    {
-      title: "Djamaa El Djazair Electrical System",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
-      slug: "djamal-el-djazair-electrical-system",
-    },
+    }
   ];
   
   return (
     <Layout>
       <section className="w-screen min-h-screen  flex flex-col  gap-6 py-10">
-        <div className="flex items-center justify-between px-[10vw] text-center">
+        <div className="flex items-center justify-between px-[10vw] text-center mb-6">
           <h2 className="text-[2.5rem] font-bold text-Typo text-center text-6xl w-full">Solutions</h2>
         </div>
         <div className="grid grid-cols-3 items-center gap-x-8 w-[95vw] mx-auto justify-between flex-wrap gap-y-16">

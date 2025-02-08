@@ -16,11 +16,11 @@ const TreatmentComponent = ({ handleTabChange }) => {
   return (
     <div className="w-full mt-4">
       <p className="text-mainColor text-2xl font-semibold">
-        Please wait while data is processed:
+        Calculating the shortest path using the collected data:
       </p>
       <div className="flex justify-center">
         <div className="h-[50vh] flex items-center justify-center">
-        {isLoading ? (
+          {isLoading ? (
             <Loading />
           ) : (
             <p className="text-3xl">Chargement terminé!</p>
@@ -28,7 +28,7 @@ const TreatmentComponent = ({ handleTabChange }) => {
         </div>
       </div>
       <p className="text-mainColor text-2xl font-semibold">
-        See the final result of the problem solution :
+        See the final result of the problem resolution:
       </p>
     </div>
   );

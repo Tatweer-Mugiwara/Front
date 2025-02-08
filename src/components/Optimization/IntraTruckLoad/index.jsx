@@ -79,14 +79,14 @@ const IntraTruckLoadContent = () => {
                   See the final result of the problem solution
                 </p>
                 <button
-                onClick={() => {
-                  setToUpdateVal("output");
-                }}
-                className="px-16 py-3 bg-mainColor w-fit text-white font-unbounded font-bold"
-              >
-                Finish
-              </button>
-            </div>
+                  onClick={() => {
+                    setToUpdateVal("output");
+                  }}
+                  className="px-16 py-3 bg-mainColor w-fit text-white font-unbounded font-bold"
+                >
+                  Finish
+                </button>
+              </div>
           ),
           key: 2
         },

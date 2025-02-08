@@ -12,6 +12,8 @@ const Navbar = () => {
   const [userName, setUsername] = useState('');
 
   useEffect(() => {
+    if (!(Cookies.get("connect.sid"))) return;
+    
     const getProfile = async () => {
       try {
         const res = await API.get("users/profile");
@@ -68,7 +70,7 @@ const Navbar = () => {
               to="/explore"
               className={({ isActive }) => (isActive ? "underline" : "")}
             >
-              RouteGenius
+              Solutions
             </NavLink>
           </li>
           <li className="flex transition-all hover:translate-y-1">
