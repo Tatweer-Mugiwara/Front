@@ -16,19 +16,19 @@ const TreatmentComponent = ({ handleTabChange }) => {
   return (
     <div className="w-full mt-4">
       <p className="text-mainColor text-2xl font-semibold">
-        PLEASE WAIT while Data is processed :
+        Please wait while data is processed:
       </p>
       <div className="flex justify-center">
         <div className="h-[50vh] flex items-center justify-center">
         {isLoading ? (
             <Loading />
           ) : (
-            <p className="text-3xl">Chargement terminé!</p>
+            <p className="text-3xl">cargement terminé!</p>
           )}
         </div>
       </div>
       <p className="text-mainColor text-2xl font-semibold">
-        See the FINAL RESULT of the problem solution :
+        See the final result of the problem solution :
       </p>
     </div>
   );

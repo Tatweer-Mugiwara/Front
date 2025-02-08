@@ -1,7 +1,7 @@
 import { useState } from "react";
-// import OutputComponent from "./OutputComponent";
-import TraitmentComponent from "./TraitmentComponent";
 import InputComponent from "./InputComponent";
+import TraitmentComponent from "./TraitmentComponent";
+import OutputComponent from "./OutputComponent";
 import Tabs from "../../Tabs";
 
 const IntraTruckLoadContent = () => {
@@ -47,7 +47,7 @@ const IntraTruckLoadContent = () => {
         },
         {
           header: "output",
-          component: <div></div>,
+          component: <OutputComponent />,
           key: "output",
         },
       ]}

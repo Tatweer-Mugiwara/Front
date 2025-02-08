@@ -76,7 +76,9 @@ const OutputComponent = ({ handleTabChange }) => {
       <p className="text-mainColor text-2xl font-semibold">
         Showing the final planified deliveries with their informations:
       </p>
-      <Map />
+      <div className="flex h-[70vh] w-full mt-5">
+        <Map />
+      </div>
       <div className="overflow-x-auto mt-4">
         <table className="min-w-full bg-white border">
           <thead className="bg-mainColor text-white">
