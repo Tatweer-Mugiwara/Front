@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import API from "../../../utils/api-client";
-import Map from "../../Map";
+import InterTruckLoadMap from "../../Map/InterTruckLoadMap";
 
 const InputComponent = ({
   data,
@@ -34,7 +34,7 @@ const InputComponent = ({
   return (
     <div className="w-full">
       <div className="flex h-[70vh] w-full">
-        <Map hoveredOrder={hoveredOrder} />
+        <InterTruckLoadMap hoveredOrder={hoveredOrder} />
       </div>
       <div className="overflow-x-auto mt-4">
         <table className="min-w-full bg-white border border-mainColor">
