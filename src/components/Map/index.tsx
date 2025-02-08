@@ -1,3 +1,4 @@
+import React from "react";
 import { memo, useEffect, useState } from "react";
 import { GoogleMap, DirectionsRenderer } from "@react-google-maps/api";
 import { getGeocode, getLatLng } from "use-places-autocomplete";
@@ -25,13 +26,16 @@ function Map({ hoveredOrder = null }) {
       const directionsService = new window.google.maps.DirectionsService();
 
       try {
-        const originGeo = await getGeocode({ address: hoveredOrder.departure });
+        //@ts-ignore
+        const originGeo = await getGeocode({ address: hoveredOrder?.departure });
         const origin = await getLatLng(originGeo[0]);
 
-        const destinationGeo = await getGeocode({ address: hoveredOrder.destination });
+        //@ts-ignore
+        const destinationGeo = await getGeocode({ address: hoveredOrder?.destination });
         const destination = await getLatLng(destinationGeo[0]);
 
-        const waypoints = hoveredOrder.intermediateDestinations?.map(async (city) => {
+        //@ts-ignore
+        const waypoints = hoveredOrder?.intermediateDestinations?.map(async (city) => {
           const cityGeo = await getGeocode({ address: city });
           return { location: await getLatLng(cityGeo[0]), stopover: true };
         });
@@ -47,6 +51,7 @@ function Map({ hoveredOrder = null }) {
           },
           (result, status) => {
             if (status === window.google.maps.DirectionsStatus.OK) {
+              //@ts-ignore
               setDirections(result);
               setCenter(origin); // Centre la carte sur le point de départ
             } else {

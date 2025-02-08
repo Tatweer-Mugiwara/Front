@@ -6,6 +6,7 @@ import Tabs from "../../Tabs";
 
 const RoutingContent = () => {
   const [toUpdateVal, setToUpdateVal] = useState(null);
+  const [data, setData] = useState([]);
 
   return (
     <Tabs
@@ -15,7 +16,10 @@ const RoutingContent = () => {
       content={[
         {
           header: "input",
-          component: <InputComponent />,
+          component: <InputComponent
+            data={data}
+            setData={setData}
+          />,
           key: "input",
         },
         {
@@ -38,6 +42,10 @@ const RoutingContent = () => {
                 setToUpdateVal("treatment");
               }}
               className="mt-8 px-8 py-3 bg-mainColor text-white font-unbounded font-bold"
+              disabled={data.length === 0}
+              style={{
+                opacity: data.length === 0 ? 0.5 : 1,
+              }}
             >
               Start
             </button>
