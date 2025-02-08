@@ -21,7 +21,7 @@ const FeaturesContent = () => {
     {
       title: "Visibilité et Réactivité en Temps Réel",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.",
-      slug: "visibilite-reactivite-temps-reel",
+      slug: "real-time-responsivness",
     },
     {
       title: "Planification & Coordination",
