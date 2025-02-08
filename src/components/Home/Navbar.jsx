@@ -86,17 +86,43 @@ const Navbar = () => {
               to="/support"
               className={({ isActive }) => (isActive ? "underline" : "")}
             >
-              Support
+              Contact
             </NavLink>
           </li>
         </ul>
       ) : (
         <ul className="flex gap-2 md:gap-10 items-center">
-          <li className="flex transition-all hover:translate-y-1">Home</li>
-          <li className="flex transition-all hover:translate-y-1">About Us</li>
-          <li className="flex transition-all hover:translate-y-1">Provide</li>
+          <li className="flex transition-all hover:translate-y-1">
+            <NavLink
+              to="/"
+              className={({ isActive }) => (isActive ? "underline" : "")}
+            >
+              Home
+            </NavLink>
+          </li>
           <li className="flex gap-2 items-center transition-all hover:translate-y-1">
-            Property <img src="/images/Home/Polygon.svg" alt="Polygon" />
+            <NavLink
+              to="/explore"
+              className={({ isActive }) => (isActive ? "underline" : "")}
+            >
+              Provide
+            </NavLink>
+          </li>
+          <li className="flex gap-2 items-center transition-all hover:translate-y-1">
+            <NavLink
+              to="/upgrade"
+              className={({ isActive }) => (isActive ? "underline" : "")}
+            >
+              Pricing
+            </NavLink>
+          </li>
+          <li className="flex transition-all hover:translate-y-1">
+            <NavLink
+              to="/support"
+              className={({ isActive }) => (isActive ? "underline" : "")}
+            >
+              Contact
+            </NavLink>
           </li>
         </ul>
       )}

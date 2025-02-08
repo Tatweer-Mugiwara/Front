@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ReactApexChart from 'react-apexcharts';
 
 export default function TruckGraphs({
   data
@@ -22,8 +23,22 @@ export default function TruckGraphs({
               <option value="O2">O2</option>
             </select>
           </div>
-          <div className="flex justify-center flex-col gap-10 w-full mt-4">
-            //TODO: GRAPH
+          <div className="flex justify-center flex-col gap-10 w-full mt-4 overflow-hidden">
+            <ReactApexChart
+                className="w-full"
+                options={{
+                  xaxis: {
+                    categories: (dataF ?? [])?.map((e) => e.createdAt.split("T")[1].split(".")[0]),
+                    colors: ['#4ecdc4', "#ed5565", "#43b1a9"],
+                  },
+                }}
+                series={[{
+                    name: 'Total',
+                    data: [(dataF ?? [])?.map((e) => e.value)],
+                }]}
+                type="line"
+                height={350}
+            />
           </div>
         </div>
       </div>
